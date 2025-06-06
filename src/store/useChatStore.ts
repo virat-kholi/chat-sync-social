@@ -27,21 +27,20 @@ export interface Conversation {
   id: string;
   createdAt: Date;
   lastMessageAt: Date;
-  name?: string;
   users: User[];
   messages: Message[];
   lastMessage?: Message;
 }
 
 interface ChatState {
-  // Current user
+  // Current user (from session)
   currentUser: User | null;
   
   // Users
   users: User[];
   onlineUsers: Set<number>;
   
-  // Conversations
+  // Conversations (only 1-on-1)
   conversations: Conversation[];
   activeConversationId: string | null;
   

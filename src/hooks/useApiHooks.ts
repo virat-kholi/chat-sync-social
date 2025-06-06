@@ -12,11 +12,11 @@ export const queryKeys = {
   messages: (conversationId: string) => ['messages', conversationId] as const,
 };
 
-// Users
+// Session-based current user
 export const useCurrentUser = () => {
   return useQuery({
     queryKey: queryKeys.currentUser,
-    queryFn: apiClient.getCurrentUser,
+    queryFn: apiClient.getCurrentUserFromSession,
     staleTime: 5 * 60 * 1000, // 5 minutes
   });
 };
@@ -29,7 +29,7 @@ export const useUsers = () => {
   });
 };
 
-// Conversations
+// Conversations (1-on-1 only)
 export const useConversations = () => {
   return useQuery({
     queryKey: queryKeys.conversations,
@@ -89,7 +89,7 @@ export const useSendMessage = () => {
       image?: string; 
       doc?: string; 
     }) => {
-      if (!currentUser) throw new Error('No current user');
+      if (!currentUser) throw new Error('No current user in session');
       return apiClient.sendMessage(conversationId, currentUser.id, body, image, doc);
     },
     onMutate: async ({ conversationId, body, image, doc }) => {
@@ -132,7 +132,6 @@ export const useSendMessage = () => {
       
       // Remove optimistic message on error
       if (context?.optimisticId) {
-        // You could implement a removeMessage action in the store
         console.log('Remove optimistic message:', context.optimisticId);
       }
 
@@ -151,7 +150,7 @@ export const useMarkMessagesAsSeen = () => {
 
   return useMutation({
     mutationFn: ({ messageIds }: { messageIds: string[] }) => {
-      if (!currentUser) throw new Error('No current user');
+      if (!currentUser) throw new Error('No current user in session');
       return apiClient.markMessagesAsSeen(messageIds, currentUser.id);
     },
     onMutate: async ({ messageIds }) => {
@@ -165,7 +164,6 @@ export const useMarkMessagesAsSeen = () => {
     },
     onError: (error) => {
       console.error('Failed to mark messages as seen:', error);
-      // Could revert optimistic update here
     },
   });
 };

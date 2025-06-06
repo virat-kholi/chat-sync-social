@@ -47,6 +47,7 @@ export const ConversationsList = ({ conversations, isLoading }: ConversationsLis
       </p>
       
       {conversations.map((conversation) => {
+        // For 1-on-1 chats, get the other user
         const otherUser = conversation.users.find(user => user.id !== currentUser?.id);
         const isActive = activeConversationId === conversation.id;
         const isOnline = otherUser && onlineUsers.has(otherUser.id);
