@@ -1,4 +1,3 @@
-
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
 
@@ -7,7 +6,6 @@ export interface User {
   name: string;
   email: string;
   avatar?: string;
-  isOnline?: boolean;
   lastSeen?: Date;
 }
 

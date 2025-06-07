@@ -1,4 +1,3 @@
-
 import { User, Conversation, Message } from '@/store/useChatStore';
 
 const API_BASE = '/api';
@@ -11,8 +10,7 @@ const mockSessionUser: User = {
   id: 1,
   name: 'Current User',
   email: 'current@example.com',
-  avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face',
-  isOnline: true
+  avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face'
 };
 
 // Mock other users
@@ -21,29 +19,25 @@ const mockUsers: User[] = [
     id: 2,
     name: 'Alice Johnson',
     email: 'alice@example.com',
-    avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face',
-    isOnline: true
+    avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face'
   },
   {
     id: 3,
     name: 'Bob Smith',
     email: 'bob@example.com',
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face',
-    isOnline: true
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face'
   },
   {
     id: 4,
     name: 'Carol Davis',
     email: 'carol@example.com',
-    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face',
-    isOnline: false
+    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face'
   },
   {
     id: 5,
     name: 'David Wilson',
     email: 'david@example.com',
-    avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face',
-    isOnline: true
+    avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face'
   }
 ];
 

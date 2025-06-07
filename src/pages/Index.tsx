@@ -1,4 +1,3 @@
-
 import { useEffect } from 'react';
 import { ChatLayout } from '@/components/chat/ChatLayout';
 import { useChatStore } from '@/store/useChatStore';
@@ -20,11 +19,9 @@ const Index = () => {
   useEffect(() => {
     if (users) {
       setUsers(users);
-      // Mock some users as online
-      const onlineUserIds = users
-        .filter(user => user.isOnline)
-        .map(user => user.id);
-      setOnlineUsers(onlineUserIds);
+      // Mock some users as online - in real app this would come from Pusher
+      const mockOnlineUserIds = [2, 3, 5]; // Mock Alice, Bob, and David as online
+      setOnlineUsers(mockOnlineUserIds);
     }
   }, [users, setUsers, setOnlineUsers]);
 
